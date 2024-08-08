@@ -25,7 +25,7 @@
     }
 }
 
-#proyectos {
+#Proyectos {
     text-align: center;
 }
 
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
 #ColorModal {
     background-color: black;
@@ -64,8 +64,6 @@
     text-align: center;
 }
 
-
-
 #Footer {
     background-color: #333;
     color: #fff;
@@ -73,11 +71,11 @@
     padding: 10px;
     width: 100%;
     bottom: 0;
-  }
+}
   
-  #Footer p {
+#Footer p {
     margin: 0;
-  }
+}
 
 #SobreMi {
     color: rgb(255, 255, 255);
@@ -103,3 +101,15 @@
       transform: translateY(0);
     }
   }
+
+/* Ajustar la imagen GIF */
+#logo-img {
+    vertical-align: middle; /* Alinea verticalmente el GIF con el texto */
+    margin-left: 0px; /* Espacio entre el texto y la imagen */
+    height: 30px; /* Ajusta la altura si es necesario */
+    transform: translateY(-5px); /* Ajusta el valor para levantar la imagen */
+}
+
+html {
+    scroll-behavior: smooth;
+}
