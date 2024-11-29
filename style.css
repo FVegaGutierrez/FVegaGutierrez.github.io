@@ -163,3 +163,19 @@ nav a:hover {
     margin: 0 auto;
 }
 
+.btn-evento {
+    background-color: #005a9e;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-mentoria {
+    background-color: #005a9e;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
