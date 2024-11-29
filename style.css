@@ -149,3 +149,17 @@ nav a:hover {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
 }
+
+.pagination {
+    list-style-type: none; /* Elimina los puntos negros */
+    padding: 0; /* Quita el padding predeterminado */
+    margin: 0; /* Quita el margen predeterminado */
+    display: flex; /* Asegura que los elementos estén alineados en fila */
+    justify-content: center; /* Centra la paginación horizontalmente */
+}
+
+.center-button {
+    display: block;
+    margin: 0 auto;
+}
+

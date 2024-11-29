@@ -22,7 +22,8 @@
         <h2>Cursos</h2>
         <p>Descubre nuestra oferta de cursos técnicos diseñados para impulsar tu carrera en tecnología. Nuestros programas están enfocados en la formación y empoderamiento de mujeres en el campo de la tecnología.</p>
         
-        <div class="course-cards">
+        <div id="course-cards-container" class="course-cards">
+            <!-- Tarjetas -->
             <div class="course-card">
                 <h3>Introducción a la Programación</h3>
                 <p>Un curso básico sobre programación en diversos lenguajes. Aprende a escribir código desde cero.</p>
@@ -44,13 +45,110 @@
                 <p>Curso avanzado donde aprenderás sobre ciencia de datos y el uso de herramientas de machine learning con Python.</p>
                 <p><strong>Duración:</strong> 6 meses</p>
                 <p><strong>Fecha de inicio:</strong> Marzo 2025</p>
-                <a href="https://www.mbitschool.com/cursos/master-data-science?_gl=1*z414ir*_up*MQ..*_ga*MTI0OTE4ODM2Mi4xNzMyODQ2MTM2*_ga_G98B6L7SWG*MTczMjg0NjEzNi4xLjAuMTczMjg0NjEzNi4wLjAuMA.." class="btn">Más información</a>
+                <a href="https://www.mbitschool.com/cursos/master-data-science" class="btn">Más información</a>
+            </div>
+    
+            <!-- Tarjetas adicionales -->
+            <div class="course-card">
+                <h3>Ciberseguridad para mujeres</h3>
+                <p>Aprende los fundamentos de ciberseguridad en un entorno amigable para mujeres.</p>
+                <p><strong>Duración:</strong> 4 meses</p>
+                <p><strong>Fecha de inicio:</strong> Abril 2025</p>
+                <a href="#" class="btn">Más información</a>
+            </div>
+    
+            <div class="course-card">
+                <h3>Diseño UX/UI</h3>
+                <p>Aprende a diseñar interfaces funcionales y visualmente atractivas.</p>
+                <p><strong>Duración:</strong> 3 meses</p>
+                <p><strong>Fecha de inicio:</strong> Mayo 2025</p>
+                <a href="#" class="btn">Más información</a>
+            </div>
+    
+            <div class="course-card">
+                <h3>Introducción a la Inteligencia Artificial</h3>
+                <p>Explora los fundamentos de la inteligencia artificial en este curso introductorio.</p>
+                <p><strong>Duración:</strong> 5 meses</p>
+                <p><strong>Fecha de inicio:</strong> Junio 2025</p>
+                <a href="#" class="btn">Más información</a>
             </div>
         </div>
+    
+        <!-- Paginación Bootstrap -->
+        <nav aria-label="Paginación de cursos">
+            <ul id="pagination" class="pagination justify-content-center">
+                <!-- Elementos de la paginación se generarán dinámicamente -->
+            </ul>
+        </nav>
     </div>
+    
     <footer class="footer">
         &copy; 2024 Mujeres en TI - Todos los derechos reservados
     </footer>
 
 </body>
 </html>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const cardsPerPage = 3; // Número de tarjetas por página
+    const cards = document.querySelectorAll('.course-card');
+    const pagination = document.getElementById('pagination');
+    let currentPage = 1;
+
+    function showPage(page) {
+        const start = (page - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        cards.forEach((card, index) => {
+            card.style.display = index >= start && index < end ? 'block' : 'none';
+        });
+
+        updatePagination(page);
+    }
+
+    function updatePagination(page) {
+        pagination.innerHTML = '';
+        const totalPages = Math.ceil(cards.length / cardsPerPage);
+
+        // Botón "Anterior"
+        const prevButton = document.createElement('li');
+        prevButton.className = `page-item ${page === 1 ? 'disabled' : ''}`;
+        prevButton.innerHTML = `
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>`;
+        prevButton.addEventListener('click', () => {
+            if (page > 1) showPage(page - 1);
+        });
+        pagination.appendChild(prevButton);
+
+        // Botones de número de página
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('li');
+            pageButton.className = `page-item ${i === page ? 'active' : ''}`;
+            pageButton.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageButton.addEventListener('click', () => showPage(i));
+            pagination.appendChild(pageButton);
+        }
+
+        // Botón "Siguiente"
+        const nextButton = document.createElement('li');
+        nextButton.className = `page-item ${page === totalPages ? 'disabled' : ''}`;
+        nextButton.innerHTML = `
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>`;
+        nextButton.addEventListener('click', () => {
+            if (page < totalPages) showPage(page + 1);
+        });
+        pagination.appendChild(nextButton);
+    }
+
+    // Mostrar la primera página al cargar
+    showPage(currentPage);
+});
+
+</script>

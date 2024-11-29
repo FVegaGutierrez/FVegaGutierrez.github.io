@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 <body>
@@ -25,18 +26,20 @@
                 Completa el siguiente formulario y nuestro equipo te responderá a la brevedad.
             </p>
 
-            <form action="/submit-form" method="POST" class="contact-form">
-                <label for="nombre">Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
-
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" required placeholder="Ejemplo: nombre@correo.com">
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
-
-                <button type="submit" class="btn">Enviar mensaje</button>
-            </form>
+            <div class="container mt-5">
+                <form id="contactForm" action="/submit-form" method="POST" class="contact-form">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre" class="form-control mb-3">
+        
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required placeholder="Ejemplo: nombre@correo.com" class="form-control mb-3">
+        
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..." class="form-control mb-3"></textarea>
+        
+                    <button type="submit" class="btn btn-primary" style="background-color: #005a9e; color: white;">Enviar mensaje</button>
+                </form>
+            </div>
         </div>
 
         <div class="section">
@@ -53,3 +56,25 @@
     </footer>
 </body>
 </html>
+
+<script>
+// Capturar el evento submit del formulario
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Detener el envío del formulario
+
+    // Opcional: Aquí podrías enviar el formulario vía AJAX si lo necesitas
+    // fetch('/submit-form', { method: 'POST', body: new FormData(this) })
+
+    // Mostrar SweetAlert
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado!',
+        text: 'Tu corrao ha sido enviado exitosamente.',
+        confirmButtonText: 'Aceptar'
+    }).then(() => {
+        // Restablecer el formulario después de mostrar la alerta
+        document.getElementById('contactForm').reset();
+    });
+});
+
+</script>
